@@ -35,7 +35,7 @@ jobs:
         shell: sh
         run: |
           pwd
-          ls -lrt dist*
+          ls -lrt dist-without-markdown*
           ls -lrt 
     
       - name: Push artifact to Artifactory
