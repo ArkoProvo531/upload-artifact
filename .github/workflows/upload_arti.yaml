@@ -21,15 +21,15 @@ jobs:
           path: |
             dist
             !dist/**/*.md
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: code-coverage-report
-          path: output/test/code-coverage.html
           
       - uses: jfrog/setup-jfrog-cli@v1
       - name: Jfrog version
         run: jfrog --version
+        
+      - name: Download dist result
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-without-markdown  
     
       - name: Push artifact to Artifactory
         env:
@@ -38,4 +38,4 @@ jobs:
           ARTIFACTORY_PASSWORD: ${{ secrets.JF_PASSWORD }}
           ARTIFACTORY_REPO: test1
         run: |
-          jfrog rt u *.zip "${{ env.ARTIFACTORY_REPO }}" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
+          jfrog rt u dist-without-markdown.zip "${{ env.ARTIFACTORY_REPO }}" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
