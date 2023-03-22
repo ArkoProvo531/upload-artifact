@@ -66,6 +66,6 @@ jobs:
         run: |
           mkdir new_download
           chmod 777 new_download
-          jfrog rt dl "${{ env.ARTIFACTORY_REPO }}/*.jar" new_download/ --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
+          jfrog rt dl "${{ env.ARTIFACTORY_REPO }}/*.tar" new_download/ --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
           cd new_download
           ls -lrt
