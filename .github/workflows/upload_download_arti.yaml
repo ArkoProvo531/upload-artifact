@@ -47,3 +47,22 @@ jobs:
           ARTIFACTORY_REPO: test1
         run: |
           jfrog rt u *.tar "${{ env.ARTIFACTORY_REPO }}" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
+     
+  download_artifact_from_jfrog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - uses: jfrog/setup-jfrog-cli@v1
+      - name: Jfrog version
+        run: jfrog --version
+        
+      - name: download artifact to local from jfrog
+        env:
+          ARTIFACTORY_URL: https://arkoartifact.jfrog.io/artifactory
+          ARTIFACTORY_USERNAME: ${{ secrets.JF_USER }}
+          ARTIFACTORY_PASSWORD: ${{ secrets.JF_PASSWORD }}
+          ARTIFACTORY_REPO: test1
+        run: |
+          jfrog rt dl "${{ env.ARTIFACTORY_REPO }}/*.jar" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
+ 
