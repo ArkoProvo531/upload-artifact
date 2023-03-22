@@ -36,6 +36,6 @@ jobs:
           ARTIFACTORY_URL: https://arkoartifact.jfrog.io/artifactory
           ARTIFACTORY_USERNAME: ${{ secrets.JF_USER }}
           ARTIFACTORY_PASSWORD: ${{ secrets.JF_PASSWORD }}
-          ARTIFACTORY_REPO: npmtest
+          ARTIFACTORY_REPO: test1
         run: |
           jfrog rt u *.zip "${{ env.ARTIFACTORY_REPO }}" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
