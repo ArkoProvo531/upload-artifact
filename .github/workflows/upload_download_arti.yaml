@@ -49,6 +49,7 @@ jobs:
           jfrog rt u *.tar "${{ env.ARTIFACTORY_REPO }}" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
      
   download_artifact_from_jfrog:
+    needs: build_and_test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
