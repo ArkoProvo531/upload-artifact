@@ -30,11 +30,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: dist-without-markdown  
+          
       - name: To check the path
         shell: sh
         run: |
           pwd
-          ls -lrt
+          ls -lrt dist*
+          ls -lrt 
     
       - name: Push artifact to Artifactory
         env:
@@ -43,4 +45,4 @@ jobs:
           ARTIFACTORY_PASSWORD: ${{ secrets.JF_PASSWORD }}
           ARTIFACTORY_REPO: test1
         run: |
-          jfrog rt u dist-without-markdown.zip "${{ env.ARTIFACTORY_REPO }}" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
+          jfrog rt u dist/* "${{ env.ARTIFACTORY_REPO }}" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
