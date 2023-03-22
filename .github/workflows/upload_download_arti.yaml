@@ -1,4 +1,4 @@
-name: Node upload test
+name: Node upload and download test
 
 on:
   workflow_dispatch:
@@ -64,5 +64,8 @@ jobs:
           ARTIFACTORY_PASSWORD: ${{ secrets.JF_PASSWORD }}
           ARTIFACTORY_REPO: test1
         run: |
-          jfrog rt dl "${{ env.ARTIFACTORY_REPO }}/*.jar" --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
- 
+          mkdir new_download
+          chmod 777 new_download
+          jfrog rt dl "${{ env.ARTIFACTORY_REPO }}/*.jar" new_download/ --url="${{ env.ARTIFACTORY_URL }}" --user="${{ env.ARTIFACTORY_USERNAME }}" --password="${{ env.ARTIFACTORY_PASSWORD }}"    
+          cd new_download
+          ls -lrt
