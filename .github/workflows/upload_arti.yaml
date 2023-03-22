@@ -21,6 +21,14 @@ jobs:
           path: |
             dist
             !dist/**/*.md
+            
+            
+      - name: To check the path
+        shell: sh
+        run: |
+          pwd
+          ls -lrt
+          ls -la
           
       - uses: jfrog/setup-jfrog-cli@v1
       - name: Jfrog version
@@ -35,8 +43,8 @@ jobs:
         shell: sh
         run: |
           pwd
-          ls -lrt dist-without-markdown*
-          ls -lrt 
+          ls -lrt
+          ls -la
     
       - name: Push artifact to Artifactory
         env:
