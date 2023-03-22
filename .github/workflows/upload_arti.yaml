@@ -16,7 +16,7 @@ jobs:
           npm test
           
       - name: Tar files
-        run: tar -cvf my_file.tar /dist  
+        run: tar -cvf my_file.tar dist  
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
