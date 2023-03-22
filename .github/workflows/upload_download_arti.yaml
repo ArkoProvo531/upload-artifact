@@ -59,6 +59,7 @@ jobs:
         run: jfrog --version
         
       - name: download artifact to local from jfrog
+        shell: sh
         env:
           ARTIFACTORY_URL: https://arkoartifact.jfrog.io/artifactory
           ARTIFACTORY_USERNAME: ${{ secrets.JF_USER }}
