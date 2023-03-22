@@ -27,6 +27,10 @@ jobs:
           name: code-coverage-report
           path: output/test/code-coverage.html
           
+      - uses: jfrog/setup-jfrog-cli@v1
+      - name: Jfrog version
+        run: jfrog --version
+    
       - name: Push artifact to Artifactory
         env:
           ARTIFACTORY_URL: https://arkoartifact.jfrog.io/artifactory/
