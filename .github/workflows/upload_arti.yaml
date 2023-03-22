@@ -30,6 +30,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: dist-without-markdown  
+      - name: To check the path
+        shell: sh
+        run: |
+          pwd
+          ls -lrt
     
       - name: Push artifact to Artifactory
         env:
