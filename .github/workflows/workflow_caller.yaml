@@ -6,7 +6,7 @@ on:
 
 jobs:
   call-workflow-A:
-    uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-called_A.yml@main
+    uses: ArkoProvo531/upload-artifact/.github/workflows/workflow_called_A.yaml@main
     with:
       username: Arko_Roy
 
