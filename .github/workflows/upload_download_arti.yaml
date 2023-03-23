@@ -2,8 +2,17 @@ name: Node upload and download test
 
 on:
   repository_dispatch:
+    types: [test_result]
 
 jobs:
+  run_if_failure:
+    if: ${{ !github.event.client_payload.passed }}
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          MESSAGE: ${{ github.event.client_payload.message }}
+        run: echo $MESSAGE
+
   build_and_test:
     runs-on: ubuntu-latest
     steps:
