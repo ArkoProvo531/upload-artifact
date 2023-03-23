@@ -9,6 +9,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        
+      - name: Fetch workflow ID
+        run: |
+          echo ${{ github. run_id }}
       - name: npm install, build, and test
         run: |
           npm install
@@ -31,13 +35,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: my_file 
-          
-      - name: To check the path
-        shell: sh
-        run: |
-          pwd
-          ls -lrt
-          ls -la
     
       - name: Push artifact to Artifactory
         env:
