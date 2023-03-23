@@ -1,0 +1,18 @@
+name: resusable-workflow-caller
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  call-workflow-A:
+    uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-called_A.yml@main
+    with:
+      username: Arko_Roy
+
+ # call-workflow-B:
+ #   uses: HoussemDellai/github-actions-course/.github/workflows/080-reusable-workflow-called.yml@main
+ #   with:
+ #     username: Dellai
+ #   secrets:
+ #     token: ${{ secrets.TOKEN }}
