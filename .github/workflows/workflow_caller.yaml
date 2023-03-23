@@ -8,11 +8,9 @@ jobs:
   call-workflow-A:
     uses: ArkoProvo531/upload-artifact/.github/workflows/workflow_called_A.yaml@main
     with:
-      username: Arko_Roy
+      username: Within same repo
 
- # call-workflow-B:
- #   uses: HoussemDellai/github-actions-course/.github/workflows/080-reusable-workflow-called.yml@main
- #   with:
- #     username: Dellai
- #   secrets:
- #     token: ${{ secrets.TOKEN }}
+  call-workflow-B:
+    uses: ArkoProvo531/Windows_msbuild_test/.github/workflows/workflow_called_B.yaml@main
+    with:
+      username: Outside Repo
