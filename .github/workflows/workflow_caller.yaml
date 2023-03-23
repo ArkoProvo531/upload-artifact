@@ -11,6 +11,6 @@ jobs:
       username: Within same repo
 
   call-workflow-B:
-    uses: ArkoProvo531/Windows_msbuild_test/.github/workflows/workflow_called_B.yaml@main
+    uses: ArkoProvo531/Windows_msbuild_test/.github/workflows/workflow_called_B.yaml@master
     with:
       username: Outside Repo
