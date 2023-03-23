@@ -2,8 +2,6 @@ name: Node upload and download test
 
 on:
   repository_dispatch:
-    types:
-      - on-demand-test
 
 jobs:
   build_and_test:
