@@ -1,7 +1,6 @@
 name: Node upload and download test
 
-on:
-  repository_dispatch:
+on: repository_dispatch
 
 jobs:
   build_and_test:
