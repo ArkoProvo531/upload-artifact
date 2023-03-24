@@ -1,14 +1,20 @@
 name: Node upload and download test
 
-on: workflow_dispatch
-
+on: 
+  workflow_dispatch:
+    inputs:
+      input1:
+        description: 'Input 1'
+        required: true
+      input2:
+        description: 'Input 2'
+        required: false
 jobs:
-  run_from_postman:
+  my_job:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          MESSAGE: ${{ github.event.message }}
-        run: echo $MESSAGE
+      - name: My Step
+        run: echo "Input 1: ${{ github.event.inputs.input1 }}, Input 2: ${{ github.event.inputs.input2 }}"
 
   build_and_test:
     runs-on: ubuntu-latest
