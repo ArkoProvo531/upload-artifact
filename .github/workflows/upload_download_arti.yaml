@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: My Step
-        run: echo "Input 1: ${{ github.event.inputs.input1 }}, Input 2: ${{ github.event.inputs.input2 }}"
+        run: |
+          echo "Input 1: ${{ github.event.inputs.input1 }}, Input 2: ${{ github.event.inputs.input2 }}"
 
   build_and_test:
     runs-on: ubuntu-latest
