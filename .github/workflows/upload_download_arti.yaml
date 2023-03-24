@@ -1,6 +1,6 @@
 name: Node upload and download test
 
-on: repository_dispatch
+on: workflow_dispatch
 
 jobs:
  # run_if_failure:
