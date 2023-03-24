@@ -1,8 +1,18 @@
 name: Node upload and download test
 
-on: workflow_dispatch
+on:
+  repository_dispatch:
+    types: [on-demand-test]
 
 jobs:
+  run_if_failure:
+    if: ${{ !github.event.client_payload.unit }}
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          MESSAGE: ${{ github.event.client_payload.message }}
+        run: echo $MESSAGE
+
   build_and_test:
     runs-on: ubuntu-latest
     steps:
