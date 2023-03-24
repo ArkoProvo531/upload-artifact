@@ -1,8 +1,6 @@
 name: Node upload and download test
 
-on:
-  repository_dispatch:
-    types: [on-demand-test]
+on: workflow_dispatch
 
 jobs:
   run_if_failure:
