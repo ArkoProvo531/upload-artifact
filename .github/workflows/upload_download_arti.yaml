@@ -3,13 +3,13 @@ name: Node upload and download test
 on: workflow_dispatch
 
 jobs:
-  run_if_failure:
-    if: ${{ !github.event.client_payload.unit }}
-    runs-on: ubuntu-latest
-    steps:
-      - env:
-          MESSAGE: ${{ github.event.client_payload.message }}
-        run: echo $MESSAGE
+ # run_if_failure:
+ #   if: ${{ !github.event.client_payload.unit }}
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #     - env:
+ #         MESSAGE: ${{ github.event.client_payload.message }}
+ #       run: echo $MESSAGE
 
   build_and_test:
     runs-on: ubuntu-latest
