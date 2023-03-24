@@ -1,14 +1,13 @@
 name: Node upload and download test
 
-on: 
-  workflow_dispatch:
-    inputs:
-      input1:
-        description: 'Input 1'
-        required: true
-      input2:
-        description: 'Input 2'
-        required: false
+on: workflow_dispatch
+   # inputs:
+   #   input1:
+   #     description: 'Input 1'
+   #     required: true
+   #   input2:
+   #     description: 'Input 2'
+   #     required: false
 jobs:
   my_job:
     runs-on: ubuntu-latest
