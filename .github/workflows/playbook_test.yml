@@ -1,0 +1,41 @@
+---
+- name: Install and configure web server
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache web server
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start Apache service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Set up virtual host configuration
+      copy:
+        src: /path/to/virtualhost.conf
+        dest: /etc/apache2/sites-available/myapp.conf
+      notify:
+        - Restart Apache
+
+    - name: Enable virtual host
+      file:
+        src: /etc/apache2/sites-available/myapp.conf
+        dest: /etc/apache2/sites-enabled/myapp.conf
+        state: link
+      notify:
+        - Restart Apache
+
+  handlers:
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
