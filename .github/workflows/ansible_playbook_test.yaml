@@ -19,9 +19,7 @@ jobs:
           hostname
         
       - name: Add SSH key to runner
-        uses: webfactory/ssh-agent@v0.5.0
-        
-      - name: Update the private key  
+        uses: webfactory/ssh-agent@v0.5.0    
         run: |
           ssh-add - <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
           ssh-keyscan -t rsa ${{ matrix.os }}-runner-${{ matrix.runner_number }}.github.com >> ~/.ssh/known_hosts
