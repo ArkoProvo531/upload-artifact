@@ -18,11 +18,13 @@ jobs:
         run: |
           hostname
         
-      #- name: Add SSH key to runner
-      #  uses: webfactory/ssh-agent@v0.5.0    
-      #  with:
-      #    ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        
+      - name: Add SSH key to runner
+        uses: webfactory/ssh-agent@v0.5.0    
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          git-cmd: eval "$(ssh-agent -s)"
+          ssh-add: ${{ secrets.SSH_PRIVATE_KEY }}
+          
       - name: Update private key  
         run: |
           ssh-add - <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
