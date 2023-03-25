@@ -18,10 +18,10 @@ jobs:
         run: |
           hostname
         
-      - name: Add SSH key to runner
-        uses: webfactory/ssh-agent@v0.5.0    
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #- name: Add SSH key to runner
+      #  uses: webfactory/ssh-agent@v0.5.0    
+      #  with:
+      #    ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
         
       - name: Update private key  
         run: |
