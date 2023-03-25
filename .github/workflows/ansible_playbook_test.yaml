@@ -18,4 +18,4 @@ jobs:
           sudo apt install -y ansible
 
       - name: Run Ansible playbook
-        run: ansible-playbook playbook_test.yml
+        run: ansible-playbook -i inventory.yml playbook_test.yml
