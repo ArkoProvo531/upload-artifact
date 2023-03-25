@@ -4,10 +4,10 @@ on: workflow_dispatch
 
 jobs:
   example_job:
-  #  strategy:
-   #   matrix:
+    strategy:
+      matrix:
    #     runner_number: [10, 12, 14]
-   #     os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest]
     runs-on: ubuntu-latest
 
     steps:
@@ -22,11 +22,9 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.0    
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-add-cmd: ssh-add - <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
-          
-      - name: Update private key  
-        run: |
-          #ssh-add - <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
+          #ssh-add-cmd: ${{ secrets.SSH_PRIVATE_KEY }}
+      - run: |
+          ssh-add - <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
           ssh-keyscan -t rsa ${{ matrix.os }}-runner-${{ matrix.runner_number }}.github.com >> ~/.ssh/known_hosts
   
 
