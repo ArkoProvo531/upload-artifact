@@ -1,0 +1,21 @@
+name: Example Workflow on Ansible
+
+on: workflow_dispatch
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Ansible
+        run: |
+          sudo apt update
+          sudo apt install -y software-properties-common
+          sudo apt-add-repository --yes --update ppa:ansible/ansible
+          sudo apt install -y ansible
+
+      - name: Run Ansible playbook
+        run: ansible-playbook playbook_test.yml
