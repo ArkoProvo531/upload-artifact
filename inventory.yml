@@ -1,0 +1,4 @@
+all:
+  hosts:
+    myrunner:
+      ansible_host: ${{ matrix.os }}-runner-${{ matrix.runner_number }}.github.com
