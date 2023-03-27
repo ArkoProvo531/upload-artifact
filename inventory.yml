@@ -3,4 +3,4 @@ all:
     myrunner:
       ansible_host: fv-az553-213
       ansible_user: ubuntu
-      ansible_ssh_private_key_file: ${{ secrets.SSH_PRIVATE_KEY }}
+     # ansible_ssh_private_key_file: ${{ secrets.SSH_PRIVATE_KEY }}
