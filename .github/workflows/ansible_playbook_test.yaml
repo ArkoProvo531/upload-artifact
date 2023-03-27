@@ -4,10 +4,6 @@ on: workflow_dispatch
 
 jobs:
   example_job:
-  #  strategy:
-  #    matrix:
-  #      os: [ubuntu, centos]
-  #      version: [18.04, 20.04, 7, 8]
     runs-on: ubuntu-latest
 
     steps:
@@ -20,10 +16,10 @@ jobs:
            echo $hostname
 
         
-      - name: Add SSH key to runner
-        uses: webfactory/ssh-agent@v0.5.0    
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #    - name: Add SSH key to runner
+  #      uses: webfactory/ssh-agent@v0.5.0    
+  #      with:
+  #        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     #  - run: |
     #      ssh-add - <echo "${{ secrets.SSH_PRIVATE_KEY }}"
     #      ssh-keyscan -t rsa ${{ matrix.os }}-runner-${{ matrix.version }}.github.com >> ~/.ssh/known_hosts
@@ -40,6 +36,4 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: false
         run: |
-           HOSTNAME=$(hostname)
-           echo $HOSTNAME
            ansible-playbook -i inventory playbook_test.yml
