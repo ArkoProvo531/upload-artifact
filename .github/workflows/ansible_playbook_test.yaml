@@ -40,6 +40,6 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: false
         run: |
-           hostname > hostname.txt
-           hostname=$(hostname.txt)
+           hostname=$(hostname)
+           echo $hostname
            ansible-playbook -i inventory.yml playbook_test.yml --extra-vars "hostname=$hostname”
