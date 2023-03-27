@@ -19,23 +19,6 @@
         state: started
         enabled: yes
 
-    - name: Set up virtual host configuration
-      copy:
-        src: /path/to/virtualhost.conf
-        dest: /etc/apache2/sites-available/myapp.conf
-      remote_src: false
-      notify:
-        - Restart Apache
-
-    - name: Enable virtual host
-      file:
-        src: /etc/apache2/sites-available/myapp.conf
-        dest: /etc/apache2/sites-enabled/myapp.conf
-        state: link
-      remote_src: false  
-      notify:
-        - Restart Apache
-
   handlers:
     - name: Restart Apache
       service:
