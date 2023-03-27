@@ -23,7 +23,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: |
-          sudo apt-get update && sudo apt-get upgrade
           sudo apt-get install libssl-dev
           ssh-add - <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
           ssh-keyscan -t rsa ${{ matrix.os }}-runner-${{ matrix.version }}.github.com >> ~/.ssh/known_hosts
