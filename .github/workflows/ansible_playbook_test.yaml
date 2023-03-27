@@ -16,7 +16,9 @@ jobs:
         
       - name: Run hostname
         run: |
-          hostname
+           hostname=$(hostname)
+           echo $hostname
+
         
       - name: Add SSH key to runner
         uses: webfactory/ssh-agent@v0.5.0    
@@ -37,4 +39,7 @@ jobs:
       - name: Run Ansible playbook
         env:
           ANSIBLE_HOST_KEY_CHECKING: false
-        run: ansible-playbook -i inventory.yml playbook_test.yml
+        run: |
+           hostname > hostname.txt
+           hostname=$(hostname.txt)
+           ansible-playbook -i inventory.yml playbook_test.yml --extra-vars "hostname=$hostname”
