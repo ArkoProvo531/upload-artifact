@@ -37,8 +37,9 @@ jobs:
           sudo apt install -y ansible
 
       - name: Run Ansible playbook
-        #env:
-          #ANSIBLE_HOST_KEY_CHECKING: false
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: false
         run: |
            HOSTNAME=$(hostname)
+           echo $HOSTNAME
            ansible-playbook -i inventory.yml playbook_test.yml --extra-vars "hostname=$HOSTNAME"
