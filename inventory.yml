@@ -1,6 +1,6 @@
 all:
   hosts:
     myrunner:
-      ansible_host: ${{ matrix.os }}-runner-${{ matrix.version }}.github.com
+      ansible_host: fv-az553-213
       ansible_user: ubuntu
       ansible_ssh_private_key_file: ${{ secrets.SSH_PRIVATE_KEY }}
