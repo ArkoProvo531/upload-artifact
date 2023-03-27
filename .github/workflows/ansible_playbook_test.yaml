@@ -4,10 +4,10 @@ on: workflow_dispatch
 
 jobs:
   example_job:
-    strategy:
-      matrix:
-        os: [ubuntu, centos]
-        version: [18.04, 20.04, 7, 8]
+  #  strategy:
+  #    matrix:
+  #      os: [ubuntu, centos]
+  #      version: [18.04, 20.04, 7, 8]
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +23,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: |
-         # ssh-add - <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
+          ssh-add - <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
           ssh-keyscan -t rsa ${{ matrix.os }}-runner-${{ matrix.version }}.github.com >> ~/.ssh/known_hosts
   
 
