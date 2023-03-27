@@ -23,7 +23,7 @@
       copy:
         src: /path/to/virtualhost.conf
         dest: /etc/apache2/sites-available/myapp.conf
-      remote_src: true
+      remote_src: false
       notify:
         - Restart Apache
 
@@ -32,7 +32,7 @@
         src: /etc/apache2/sites-available/myapp.conf
         dest: /etc/apache2/sites-enabled/myapp.conf
         state: link
-      remote_src: true  
+      remote_src: false  
       notify:
         - Restart Apache
 
