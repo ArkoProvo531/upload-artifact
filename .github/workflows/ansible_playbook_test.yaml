@@ -42,4 +42,4 @@ jobs:
         run: |
            HOSTNAME=$(hostname)
            echo $HOSTNAME
-           ansible-playbook -i inventory.ini playbook_test.yml --extra-vars "hostname=$HOSTNAME"
+           ansible-playbook -i inventory playbook_test.yml
