@@ -16,14 +16,10 @@ jobs:
            echo $hostname
 
         
-  #    - name: Add SSH key to runner
-  #      uses: webfactory/ssh-agent@v0.5.0    
-  #      with:
-  #        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-    #  - run: |
-    #      ssh-add - <echo "${{ secrets.SSH_PRIVATE_KEY }}"
-    #      ssh-keyscan -t rsa ${{ matrix.os }}-runner-${{ matrix.version }}.github.com >> ~/.ssh/known_hosts
-  
+      - name: Add SSH key to runner
+        uses: webfactory/ssh-agent@v0.5.0    
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Install Ansible
         run: |
