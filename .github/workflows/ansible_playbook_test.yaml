@@ -42,4 +42,6 @@ jobs:
         run: |
            HOSTNAME=$(hostname)
            echo $HOSTNAME
+           ansible-inventory --list
+           ansible-playbook --syntax-check
            ansible-playbook -i inventory.yml playbook_test.yml --extra-vars "hostname=$HOSTNAME"
