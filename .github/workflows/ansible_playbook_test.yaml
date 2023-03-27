@@ -41,4 +41,4 @@ jobs:
           #ANSIBLE_HOST_KEY_CHECKING: false
         run: |
            HOSTNAME=$(hostname)
-           ansible-playbook -i inventory.yml playbook_test.yml --extra-vars hostname=$HOSTNAME
+           ansible-playbook -i inventory.yml playbook_test.yml --extra-vars "hostname=$HOSTNAME"
