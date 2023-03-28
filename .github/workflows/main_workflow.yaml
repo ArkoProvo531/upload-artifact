@@ -23,7 +23,7 @@ jobs:
           workflow: ${{ matrix.workflow }}.yaml
           
       - name: Failed statement
-        if: failure() &&  && github.workflow == ${{ matrix.workflow }}.yaml  github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+        if: failure() && github.workflow == ${{ matrix.workflow }}.yaml && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
         run: |
           echo "One of the workflow is failed"    
           
