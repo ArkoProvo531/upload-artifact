@@ -4,6 +4,8 @@ on: workflow_dispatch
 
 jobs:
   parallel-workflows:
+    permissions: write-all
+    name: print-token
     runs-on: ubuntu-latest
     strategy:
       matrix:
