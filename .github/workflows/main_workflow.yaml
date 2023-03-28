@@ -1,0 +1,27 @@
+name: Parallel Workflows with Restart
+
+on: workflow_dispatch
+
+jobs:
+  parallel-workflows:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        workflow: [workflow-A, workflow-B, workflow-C]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run workflow
+        uses: actions/workflow-dispatch@v2
+        continue-on-error: true
+        with:
+          ref: ${{ github.ref }}
+          workflow: ${{ matrix.workflow }}
+
+      - name: Check for failures
+        if: ${{ failure() }}
+        run: |
+          echo "One of the workflows failed. Restarting all workflows."
+          exit 1
