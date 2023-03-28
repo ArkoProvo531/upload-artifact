@@ -18,7 +18,7 @@ jobs:
         continue-on-error: true
         with:
           ref: ${{ github.ref }}
-          workflow: ${{ matrix.workflow }}
+          workflow: ${{ matrix.workflow }}.yaml
 
       - name: Check for failures
         if: ${{ failure() }}
