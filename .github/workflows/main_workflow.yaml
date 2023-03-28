@@ -16,7 +16,7 @@ jobs:
 
       - name: Run workflow
         uses: benc-uk/workflow-dispatch@v1.2.2
-        continue-on-error: true
+        continue-on-error: false
         with:
           ref: ${{ github.ref }}
           token: ${{ github.token }}
