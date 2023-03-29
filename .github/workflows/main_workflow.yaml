@@ -23,6 +23,5 @@ jobs:
         run: echo "GH_TOKEN=$GH_TOKEN"
       - name: Re-run failed job
         run: |
-          git init
           ls -lt
           gh workflow run /.github/workflows/workflow-C.yaml --ref main
