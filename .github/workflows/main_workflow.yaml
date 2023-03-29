@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: Get failed job ID and rerun the failed job
         run: |
-           echo "Failed job ID is ${{ workflow-C.id }}"
-           gh run rerun --job ${{ workflow-C.id }}
+           echo "Failed job ID is ${{ needs.workflow-C.id }}"
+           gh run rerun --job ${{ needs.workflow-C.id }}
