@@ -15,8 +15,8 @@ jobs:
     needs: workflow-C
     if: ${{ failure() }}
     steps:
-      - name: Get failed job ID
-        run: echo "Failed job ID is ${{ needs.workflow-C.workflow-C-Run.id }}"
+     # - name: Get failed job ID
+     #   run: echo "Failed job ID is ${{ needs.workflow-C.workflow-C-Run.id }}"
       - name: Re-run failed job
         run: |
-          gh workflow run ${{ github.workflow }} -j ${{ needs.workflow-C.workflow-C-Run.id }}
+          gh workflow run workflow-C
