@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ always() && contains(needs.workflow-C.result, 'failure') }}
     steps:
-      - name: Get failed job ID and rerun the failed job
-        run: |
-           echo "Failed job ID is ${{ needs.workflow-C.id }}"
-           gh run rerun --job ${{ needs.workflow-C.id }}
+      - name: Get failed job ID
+        id: get_job_id
+        run: echo "::set-output name=job_id::${{ workflow-C.id }}"
+      - name: Re-run failed job
+        run: gh workflow run ${{ github.workflow }} -i job_id=${{ steps.get_job_id.outputs.job_id }}
