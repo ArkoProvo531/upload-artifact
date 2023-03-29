@@ -31,4 +31,4 @@ jobs:
           cd workflows
           ls -a
           pwd
-          gh workflow run /home/runner/work/upload-artifact/upload-artifact/upload-artifact/.github/workflows/workflow-C.yaml --ref main
+          gh workflow run workflow-C.yaml --ref main
