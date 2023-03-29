@@ -6,9 +6,9 @@ jobs:
   parallel-workflows:
     permissions: write-all
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        workflow: [workflow-A, workflow-B, workflow-C]
+   # strategy:
+   #   matrix:
+   #     workflow: [workflow-A, workflow-B, workflow-C]
 
     steps:
       - name: Checkout code
@@ -16,15 +16,15 @@ jobs:
 
       - name: Run workflow A
         id: workflow_A
-        uses: ./.github/workflows/workflow-A.yaml
+        uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-A.yaml@main
         
       - name: Run workflow B
         id: workflow_B
-        uses: ./.github/workflows/workflow-B.yaml  
+        uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-B.yaml@main 
         
       - name: Run workflow C
         id: workflow_C
-        uses: ./.github/workflows/workflow-C.yaml
+        uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-c.yaml@main
         
         #continue-on-error: true
         #with:
