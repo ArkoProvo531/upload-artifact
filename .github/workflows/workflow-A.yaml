@@ -7,13 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       run_number: ${{ github.run_number }}
-
+    env:  
+       RUN_NUMBER_A: ${{run_number}}
     steps:
      # - name: Checkout code
      #   uses: actions/checkout@v2
 
       - name: Run workflow statement
         env:
-           RUN_NUMBER_A: ${{ workflow-A-Run.outputs.run_number }}
+           RUN_NUMBER_A: ${{ env.RUN_NUMBER_A }}
         run: |
           echo "This is an example of workflow A with run number as: $RUN_NUMBER_A"
