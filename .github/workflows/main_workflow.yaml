@@ -14,19 +14,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run workflow
-        id: workflow
-        uses: benc-uk/workflow-dispatch@v1.2.2
-        continue-on-error: true
-        with:
-          ref: ${{ github.ref }}
-          token: ${{ github.token }}
-          workflow: ${{ matrix.workflow }}.yaml
+      - name: Run workflow A
+        id: workflow_A
+        uses: ./.github/workflows/workflow-A.yaml
+        
+      - name: Run workflow B
+        id: workflow_B
+        uses: ./.github/workflows/workflow-B.yaml  
+        
+      - name: Run workflow C
+        id: workflow_C
+        uses: ./.github/workflows/workflow-C.yaml
+        
+        #continue-on-error: true
+        #with:
+       #   ref: ${{ github.ref }}
+       #   token: ${{ github.token }}
+       #   workflow: ${{ matrix.workflow }}.yaml
           
       - name: Failed statement
-        if: ${{ failure() }} && github.workflow == ${{ matrix.workflow }}.yaml && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
-        run: |
-          echo "One of the workflow is failed"    
+        if: ${{ failure() }}
+        run: echo "One of the workflow is failed"    
           
   restart_when_failed:
     name: Restarts the scheduled run when it failed
