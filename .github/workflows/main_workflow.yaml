@@ -16,3 +16,4 @@ jobs:
     if: ${{ always() && contains(needs.*.result, 'failure') }}
     steps:
       - run: echo "There is a failure on one of the workflow"
+             echo ${{ github.event.workflow_runs[0].run_number }}
