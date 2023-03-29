@@ -10,13 +10,13 @@ jobs:
     uses: ./.github/workflows/workflow-B.yaml
   workflow-C:
     uses: ./.github/workflows/workflow-C.yaml
-  Error_Check:
-    needs: [workflow-A,workflow-B,workflow-C]
+  restart-job:
     runs-on: ubuntu-latest
-    if: ${{ always() && contains(needs.workflow-C.result, 'failure') }}
+    needs: workflow-C
+    if: ${{ failure() }}
     steps:
       - name: Get failed job ID
         id: get_job_id
-        run: echo "::set-output name=job_id::${{ needs.workflow-C.id }}"
+        run: echo "::set-output name=job_id::${{ workflow-C.id }}"
       - name: Re-run failed job
         run: gh workflow run ${{ github.workflow }} -i job_id=${{ steps.get_job_id.outputs.job_id }}
