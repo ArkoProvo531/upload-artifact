@@ -24,11 +24,7 @@ jobs:
       - name: Re-run failed job
         run: |
           gh repo clone ArkoProvo531/upload-artifact
-          cd upload-artifact
-          ls -a
-          cd .github
-          ls -a
-          cd workflows
+          cd upload-artifact/.github/workflows
           ls -a
           pwd
-          gh workflow run workflow-C.yaml --ref main
+          gh workflow run workflow-C.yaml
