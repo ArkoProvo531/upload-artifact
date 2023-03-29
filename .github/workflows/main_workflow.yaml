@@ -13,6 +13,6 @@ jobs:
   Error_Check:
     needs: [workflow-A,workflow-B,workflow-C]
     runs-on: ubuntu-latest
-    if: (needs.workflow-A.result == 'failure' || needs.workflow-B.result == 'failure' || needs.workflow-C.result == 'failure') && ${{ always() }}
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
     steps:
       - run: echo "There is a failure on one of the workflow"
