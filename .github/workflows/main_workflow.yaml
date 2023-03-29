@@ -18,7 +18,5 @@ jobs:
      # - name: Get failed job ID
      #   run: echo "Failed job ID is ${{ needs.workflow-C.workflow-C-Run.id }}"
       - name: Re-run failed job
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          gh workflow run workflow-C
+          gh workflow run ./.github/workflows/workflow-C.yaml
