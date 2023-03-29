@@ -25,7 +25,6 @@ jobs:
         run: |
           gh repo clone ArkoProvo531/upload-artifact
           ls -lrt
-          chmod -R 777 /upload-artifact
           cd upload-artifact
           ls -a
           gh workflow run workflow-C.yaml --ref main
