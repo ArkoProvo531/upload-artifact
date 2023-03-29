@@ -26,4 +26,6 @@ jobs:
           gh repo clone ArkoProvo531/upload-artifact
           cd upload-artifact
           ls -a
-          gh workflow run /.github/workflows/workflow-C.yaml --ref main
+          cd .github
+          ls -a
+         # gh workflow run /.github/workflows/workflow-C.yaml --ref main
