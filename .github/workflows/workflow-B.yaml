@@ -12,4 +12,5 @@ jobs:
 
       - name: Run workflow statement
         run: |
-          echo "This is an example of workflow B"
+          echo "This is an example of workflow B failure"
+          exit 1
