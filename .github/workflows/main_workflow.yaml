@@ -1,10 +1,10 @@
 name: Parallel Workflows with Restart
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
 
 jobs:
   parallel-workflows:
-    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:
@@ -13,15 +13,15 @@ jobs:
 
       - name: Run workflow A
         id: workflow_A
-        uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-A.yaml@main
+        uses: ./.github/workflows/workflow-A.yaml@main
         
       - name: Run workflow B
         id: workflow_B
-        uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-B.yaml@main 
+        uses: ./.github/workflows/workflow-B.yaml@main 
         
       - name: Run workflow C
         id: workflow_C
-        uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-c.yaml@main
+        uses: ./.github/workflows/workflow-c.yaml@main
           
       - name: Failed statement
         if: ${{ failure() }}
