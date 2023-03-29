@@ -11,7 +11,7 @@ jobs:
   workflow-C:
     uses: ./.github/workflows/workflow-C.yaml
   Error_Check:
-    if: (needs.workflow-A.result == 'failure' || needs.workflow-B.result == 'failure' || needs.workflow-C.result == 'failure')
+    if: (needs.workflow-A.result == 'failure' || needs.workflow-B.result == 'failure' || needs.workflow-C.result == 'failure' && {{ always() }})
     runs-on: ubuntu-latest
     needs: [workflow-A,workflow-B,workflow-C]
     steps:
