@@ -1,6 +1,6 @@
 name: workflow B
 
-on: workflow_dispatch
+on: workflow_call
 
 jobs:
   workflow-B-Run:
