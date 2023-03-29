@@ -30,4 +30,5 @@ jobs:
           ls -a
           cd workflows
           ls -a
-         # gh workflow run /.github/workflows/workflow-C.yaml --ref main
+          pwd
+          gh workflow run workflow-C.yaml --ref main
