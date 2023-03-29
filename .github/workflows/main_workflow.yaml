@@ -24,7 +24,7 @@ jobs:
       - name: Re-run failed job
         run: |
           gh repo clone ArkoProvo531/upload-artifact
-          sudo chmod -R 777 /upload-artifact/.github
+          sudo chmod -R 755 /upload-artifact/.github
           cd upload-artifact/.github/workflows
           ls -a
           pwd
