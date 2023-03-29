@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run workflow
+        id: workflow
         uses: benc-uk/workflow-dispatch@v1.2.2
         continue-on-error: true
         with:
@@ -23,7 +24,7 @@ jobs:
           workflow: ${{ matrix.workflow }}.yaml
           
       - name: Failed statement
-        if: failure() && github.workflow == ${{ matrix.workflow }}.yaml && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+        if: steps.workflow.outputs.status == 'failure' && github.workflow == ${{ matrix.workflow }}.yaml && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
         run: |
           echo "One of the workflow is failed"    
           
