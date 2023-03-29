@@ -6,9 +6,6 @@ jobs:
   parallel-workflows:
     permissions: write-all
     runs-on: ubuntu-latest
-   # strategy:
-   #   matrix:
-   #     workflow: [workflow-A, workflow-B, workflow-C]
 
     steps:
       - name: Checkout code
@@ -25,12 +22,6 @@ jobs:
       - name: Run workflow C
         id: workflow_C
         uses: ArkoProvo531/upload-artifact/.github/workflows/workflow-c.yaml@main
-        
-        #continue-on-error: true
-        #with:
-       #   ref: ${{ github.ref }}
-       #   token: ${{ github.token }}
-       #   workflow: ${{ matrix.workflow }}.yaml
           
       - name: Failed statement
         if: ${{ failure() }}
