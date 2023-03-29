@@ -23,8 +23,6 @@ jobs:
         run: echo "GH_TOKEN=$GH_TOKEN"
       - name: Re-run failed job
         run: |
-          git clone https://github.com/ArkoProvo531/upload-artifact.git
-          ls -lrt
-          cd /upload-artifact
+          gh repo clone ArkoProvo531/upload-artifact
           ls -lrt
           gh workflow run workflow-C.yaml --ref main
