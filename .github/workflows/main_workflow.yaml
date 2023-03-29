@@ -13,9 +13,9 @@ jobs:
   Error_Check:
     needs: [workflow-A,workflow-B,workflow-C]
     runs-on: ubuntu-latest
-    if: ${{ always() && contains(needs.*.result, 'failure') }}
+    if: ${{ always() && contains(needs.workflow-C.result, 'failure') }}
     steps:
-      - run: echo "There is a failure on one of the workflow"
-             echo "echo ${{ needs.workflow-A.${{env.RUN_NUMBER_A}} }}"
-            # echo "${{ needs.workflow-B.outputs.run_number }}"
-            # echo "${{ needs.workflow-C.outputs.run_number }}"
+      - name: Get failed job ID and rerun the failed job
+        run: |
+           echo "Failed job ID is ${{ workflow-C.id }}"
+           gh run rerun --job ${{ workflow-C.id }}
