@@ -16,6 +16,6 @@ jobs:
     if: ${{ always() && contains(needs.*.result, 'failure') }}
     steps:
       - run: echo "There is a failure on one of the workflow"
-             echo "echo ${{ env.RUN_NUMBER_A }}"
-             echo "${{ needs.workflow-B.outputs.run_number }}"
-             echo "${{ needs.workflow-C.outputs.run_number }}"
+             echo "echo ${{ needs.workflow-A.${{env.RUN_NUMBER_A}} }}"
+            # echo "${{ needs.workflow-B.outputs.run_number }}"
+            # echo "${{ needs.workflow-C.outputs.run_number }}"
