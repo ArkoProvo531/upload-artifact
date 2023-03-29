@@ -45,7 +45,6 @@ jobs:
         run: |
           gh repo clone ArkoProvo531/upload-artifact
           cd upload-artifact
-          sudo chmod -R 755 /.github
           cd .github/workflows
           ls -a
           pwd
