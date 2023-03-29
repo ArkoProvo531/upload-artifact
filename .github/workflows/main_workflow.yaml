@@ -19,7 +19,7 @@ jobs:
         run: gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
       - name: Set GH_TOKEN environment variable
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: echo "GH_TOKEN=$GH_TOKEN"
       - name: Re-run failed job
         run: |
