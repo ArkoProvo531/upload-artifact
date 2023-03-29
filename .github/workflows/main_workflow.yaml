@@ -23,6 +23,4 @@ jobs:
         run: echo "GH_TOKEN=$GH_TOKEN"
       - name: Re-run failed job
         run: |
-          brew install gh
-          gh --version
-          gh workflow run workflow-C.yaml
+          gh workflow run workflow-C
