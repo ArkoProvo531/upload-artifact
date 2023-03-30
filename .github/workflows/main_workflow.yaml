@@ -36,9 +36,7 @@ jobs:
     if: ${{ always() && contains(needs.workflow-C.result, 'failure') }}   
     steps:
       - name: Install and configure GitHub CLI
-        uses: actions/setup-gh@v1
-        with:
-          cli-version: 2.1.0
+        uses: ksivamuthu/actions-setup-gh-cli@v1
       - name: Login to GitHub CLI and rerun the failed job
         run: |
           gh auth login --with-token < ${{ secrets.GH_TOKEN }}
