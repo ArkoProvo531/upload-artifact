@@ -8,4 +8,5 @@ jobs:
     steps:
       - name: Run workflow statement
         run: |
-          echo "This is an example of workflow A"
+          echo "This is an example of workflow A failure"
+          exit 1
