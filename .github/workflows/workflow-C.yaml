@@ -5,8 +5,12 @@ on: [workflow_call,workflow_dispatch]
 jobs:
   workflow-C-Run:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.jobid }}
     steps:
       - name: Run workflow statement
+        id: step1
         run: |
+          echo "jobid=${{ github.job }}" > "$GITHUB_OUTPUT"
           echo "This is an example of workflow C failure"
           exit 1
