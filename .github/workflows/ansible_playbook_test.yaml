@@ -1,5 +1,4 @@
 name: Example Workflow on Ansible
-
 on: workflow_dispatch
 
 jobs:
@@ -14,8 +13,6 @@ jobs:
         run: |
            hostname=$(hostname)
            echo $hostname
-
-
       - name: Install Ansible
         run: |
           sudo apt update
