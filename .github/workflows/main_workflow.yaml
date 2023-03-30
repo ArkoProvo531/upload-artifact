@@ -37,5 +37,5 @@ jobs:
     steps:
       - name: Login to GitHub CLI and rerun the failed job
         run: |
-          gh auth login --with-token
+          gh auth login
           gh workflow list
