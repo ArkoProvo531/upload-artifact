@@ -36,9 +36,10 @@ jobs:
     if: ${{ always() && contains(needs.workflow-C.result, 'failure') }}   
     steps:
       - name: Login to GitHub CLI and rerun the failed job
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          gh auth login --with-token <<< ${{ secrets.GH_TOKEN }}
-          echo "GH_TOKEN=$GH_TOKEN"
+          gh auth login --with-token <<< ${{ env.GITHUB_TOKEN }}
           gh repo clone ArkoProvo531/upload-artifact
           cd upload-artifact
           cd .github/workflows
